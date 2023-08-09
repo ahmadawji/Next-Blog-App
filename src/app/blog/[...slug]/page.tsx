@@ -1,7 +1,14 @@
+import { delay } from "@/lib/delay";
 /* const getData = async () => {
   const post = await getDataFromCMS(slug);
   return post;
 }; */
+
+const getData = async (slug: string) => {
+  const delayResult = await delay(3000);
+  console.log(delayResult);
+  return { slug };
+};
 
 export default async function BlogPost({
   params,
@@ -9,7 +16,9 @@ export default async function BlogPost({
   params: { slug: string };
 }) {
   const { slug } = params;
-  console.log(slug);
+  const post = await getData(slug);
+  console.log(post);
+
   // const post = await getData(slug);
-  return <div>Post {`${slug}`}</div>;
+  return <div>Post {`${post.slug}`}</div>;
 }

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "./page.module.css";
 import Header from "@/components/Header";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,10 @@ export default async function Home() {
 
   return (
     <main className={styles.main}>
-      <Header />
+      <Suspense fallback={<div>Header Loading...</div>}>
+        <Header />
+      </Suspense>
+
       <div className={styles.description}>
         <h1>{post}</h1>
         <p>
