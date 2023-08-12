@@ -17,7 +17,7 @@ export default async function BlogPost({
 }) {
   const { slug } = params;
   const post = await getData(slug);
-  console.log(post);
+  throw new Error("oops");
 
   // const post = await getData(slug);
   return <div>Post {`${post.slug}`}</div>;
